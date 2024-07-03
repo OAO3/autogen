@@ -26,7 +26,10 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-    - name: Build and push
-      run: |
-        docker build --file .autogen/samples/apps/autogen-studio/Dockerfile  -t oao3/autogenstudio:latest
-        docker push oao3/autogenstudio:latest
+    - name: Build and push Backend
+      uses: docker/build-push-action@v5
+      with:
+          context: .
+          push: true
+          file: .autogen/samples/apps/autogen-studio/Dockerfile
+          tags: oao3/autogenstudio:latest
