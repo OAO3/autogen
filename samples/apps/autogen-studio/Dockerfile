@@ -14,4 +14,6 @@ WORKDIR $HOME/app
 
 COPY --chown=user . $HOME/app
 
-CMD gunicorn -w $((2 * $(getconf _NPROCESSORS_ONLN) + 1)) --timeout 12600 -k uvicorn.workers.UvicornWorker autogenstudio.web.app:app --bind "0.0.0.0:8081"
+EXPOSE 8081
+
+CMD autogenstudio ui --port 8081 --host 0.0.0.0
