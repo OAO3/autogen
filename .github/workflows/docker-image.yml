@@ -31,5 +31,5 @@ jobs:
       with:
           context: .
           push: true
-          file: .python/packages/autogen-studio/Dockerfile
+          file: ./python/packages/autogen-studio/Dockerfile
           tags: oao3/autogenstudio:latest
