@@ -3,8 +3,7 @@ WORKDIR /code
 
 RUN pip install -U gunicorn autogenstudio
 
-# Create a non-root user
-RUN useradd -m -u 1000 user
+RUN useradd -m -u 1001 user
 USER user
 ENV HOME=/home/user \
     PATH=/home/user/.local/bin:$PATH \
