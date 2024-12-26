@@ -1,8 +1,10 @@
-FROM mcr.microsoft.com/devcontainers/python:3.10
+FROM python:3.11
 
 WORKDIR /code
 
-RUN pip install -U gunicorn autogenstudio
+ADD https://github.com/microsoft/autogen/archive/refs/tags/v0.2.40.tar.gz /tmp/autogenstudio.tar.gz
+RUN mkdir -p /tmp/autogenstudio && tar -xzf /tmp/autogenstudio.tar.gz -C /tmp/autogenstudio --strip-components=1
+RUN pip install -U gunicorn /tmp/autogenstudio
 
 RUN useradd -m -u 1001 user
 USER user
