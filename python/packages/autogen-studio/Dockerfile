@@ -2,9 +2,8 @@ FROM python:3.11
 
 WORKDIR /code
 
-ADD https://github.com/microsoft/autogen/archive/refs/tags/v0.2.40.tar.gz /tmp/autogenstudio.tar.gz
-RUN mkdir -p /tmp/autogenstudio && tar -xzf /tmp/autogenstudio.tar.gz -C /tmp/autogenstudio --strip-components=1
-RUN pip install -U gunicorn /tmp/autogenstudio
+
+RUN pip install autogenstudio==0.4.0.dev45
 
 RUN useradd -m -u 1001 user
 USER user
